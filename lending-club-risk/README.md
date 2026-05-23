@@ -8,7 +8,7 @@ This is a project I built for America on Tech (Tech 360) to look at credit risk 
 * **My First attempt:** My first attempt at the model gave me an impossibly high score (a 0.96 ROC AUC). When I checked why, I realized the dataset had a massive case of data leakage. It included a column called `loan_status_Fully Paid`. In the real world, you obviously don't know if a loan is fully paid back when someone first applies for it! Leaving that in was like giving the model an answer key. 
 * **The Fix:** I completely stripped out the `loan_status` variables, forcing the model to rely only on background info like income and credit history. The real, un-cheated model ended up with a solid **0.71 ROC AUC score**.
 
----
+
 
 ## My process
 
@@ -21,7 +21,7 @@ This is a project I built for America on Tech (Tech 360) to look at credit risk 
 * Because variables like income ($100k+) and FICO scores (~700) use  different scales, I used Scikit-Learn's `StandardScaler` to normalize the data so the model wouldn't get confused by the large numbers.
 * To fix the 5.3% default imbalance, I used class_weight='balanced'. This essentially told the model: "Missing a default is a massive deal, so pay extra attention to them." This bumped the model's recall up to 68% (meaning it successfully catches 68% of all actual defaults), while maintaining an overall 0.71 ROC AUC score.
 
----
+
 
 ## What actually predicts a deafult? 
 
@@ -31,7 +31,7 @@ After training the Logistic Regression model, I pulled the strongest coefficient
 2. **`funded_amnt` / `loan_amnt` (-0.55 / -0.45):**  if the monthly payment stays the same, a larger overall loan amount slightly lowered default risk (likely because it means the loan is spread out over a longer, more manageable timeline).
 3. **Sub-Grades (B5 to D1):** The model automatically picked up on the fact that lower bank tiers sharply increased default risk, perfectly matching how real financial institutions price out risk.
 
----
+
 
 ##  How to Run It
 1. Download the raw dataset (`lc_loan.csv`) from this google drive link: https://drive.google.com/file/d/18wB8zJbPjKOBS41XjUInHmZkDUgtYMKy/view?usp=sharing

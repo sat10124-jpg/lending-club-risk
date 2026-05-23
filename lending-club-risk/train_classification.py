@@ -39,7 +39,7 @@ print(classification_report(y_test, y_pred))
 print(f"ROC AUC Score: {roc_auc_score(y_test, model.predict_proba(X_test_scaled)[:, 1]):.4f}")
 
 # 7. EXPOSE THE RISK DRIVERS (Find the professor's hidden feature)
-print("\n🔍 TOP 10 STRONGEST PREDICTORS OF DEFAULT RISK:")
+print("\n TOP 10 STRONGEST PREDICTORS OF DEFAULT RISK:")
 coefficients = pd.DataFrame({
     'Feature': X.columns,
     'Coefficient': model.coef_[0]

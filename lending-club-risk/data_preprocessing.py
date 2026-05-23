@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def preprocess_lending_data(file_path):
-    print("🚀 Loading dataset for preprocessing...")
+    print(" Loading dataset for preprocessing...")
     df = pd.read_csv(file_path)
     
     # 1. Drop columns suggested by guidelines to simplify the model
@@ -41,6 +41,6 @@ if __name__ == "__main__":
     print(f"Remaining Missing Values: {cleaned_df.isnull().sum().sum()}")
     
     # Save the processed framework to a new CSV for modeling
-    print("\n💾 Saving cleaned dataset to 'lc_loan_clean.csv'...")
+    print("\n Saving cleaned dataset to 'lc_loan_clean.csv'...")
     cleaned_df.to_csv('lc_loan_clean.csv', index=False)
     print(" Clean dataset successfully saved!")

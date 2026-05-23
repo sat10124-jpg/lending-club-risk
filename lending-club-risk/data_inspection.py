@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-print("🚀 Loading the Lending Club dataset... (This might take a moment)")
+print(" Loading the Lending Club dataset... (This might take a moment)")
 
 # 1. Load the dataset
 df = pd.read_csv('lc_loan.csv')
