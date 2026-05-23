@@ -33,7 +33,7 @@ After training the Logistic Regression model, I pulled the strongest coefficient
 
 ---
 
-## 📂 How to Run It
+##  How to Run It
 1. Download the raw dataset (`lc_loan.csv`) from this google drive link: https://drive.google.com/file/d/18wB8zJbPjKOBS41XjUInHmZkDUgtYMKy/view?usp=sharing
 2. Move the downloaded `lc_loan.csv` file directly into this project's root folder.
 3. Run the cleaning script:
