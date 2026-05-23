@@ -12,18 +12,18 @@ This is a project I built for America on Tech (Tech 360) to look at credit risk 
 
 ## My process
 
-### 1. Cleaning & Preprocessing (`data_preprocessing.py`)
+### 1. Cleaning & Preprocessing in `data_preprocessing.py`
 * Processed all **933,160 rows** of data.
 * **Feature Engineering:** The dataset had separate columns for the low and high end of a borrower's FICO score. Since they track the same thing, I averaged them into one single `fico_average` column and dropped the duplicates. I also kept the specific `sub_grade` column over the broad `grade` column to keep finer details.
 * **Handling Missing Values:** About half of the dataset was missing values for `mths_since_last_delinq`. Instead of throwing that data away, I realized that missing data here actually means the person has never had a delinquency . I made a new true/false column called `has_delinq_history` and filled the blanks with `-1`.
 
-### 2. Training & Scaling (`train_classification.py`)
+### 2. Training & Scaling in `train_classification.py`
 * Because variables like income ($100k+) and FICO scores (~700) use  different scales, I used Scikit-Learn's `StandardScaler` to normalize the data so the model wouldn't get confused by the large numbers.
 * To fix the 5.3% default imbalance, I used class_weight='balanced'. This essentially told the model: "Missing a default is a massive deal, so pay extra attention to them." This bumped the model's recall up to 68% (meaning it successfully catches 68% of all actual defaults), while maintaining an overall 0.71 ROC AUC score.
 
 
 
-## What actually predicts a deafult? 
+## How do we know how to predict a default? 
 
 After training the Logistic Regression model, I pulled the strongest coefficients to see what variables impacted the risk the most:
 
